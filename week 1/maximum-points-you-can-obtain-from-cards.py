@@ -3,12 +3,15 @@ class Solution:
         l = 0
         r = len(cardPoints) - k
         total = sum(cardPoints[r:])
-        max_count = total
+        max_score = total
 
         while r < len(cardPoints):
-            total += (cardPoints[l] - cardPoints[r])
-            max_count = max(max_count, total)
+            total += cardPoints[l]
+            total -= cardPoints[r]
+            max_score = max(max_score, total)
             l += 1
             r += 1
-        return max_count
+        return max_score
+
+
         
