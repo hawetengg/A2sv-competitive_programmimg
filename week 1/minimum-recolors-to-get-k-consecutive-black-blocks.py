@@ -1,15 +1,12 @@
 class Solution:
     def minimumRecolors(self, blocks: str, k: int) -> int:
-        ans = []
-        count = blocks[:k].count("W")
-        ans.append(count)
+        look_up = Counter(blocks[:k])
+        min_op = look_up["W"]
+        l = 0
 
-        for i in range(1, len(blocks) - k + 1):
-            if blocks[i - 1 + k] == "W":
-                count += 1
-            if blocks[i - 1] == "W":
-                count -= 1
-            ans.append(count)
-        minn = min(ans)
-        return minn
-        
+        for r in range(k, len(blocks)):
+            look_up[blocks[r]] += 1
+            look_up[blocks[l]] -= 1
+            l += 1
+            min_op = min(min_op, look_up["W"])
+        return min_op
