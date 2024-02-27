@@ -9,10 +9,10 @@ class Solution:
         while queue:
             index = queue.popleft()
             if tickets[index] > 0:
+                queue.append(index)
                 tickets[index] -= 1
                 time += 1
-            if tickets[index] > 0:
-                queue.append(index)
+                
             if tickets[k] == 0:
                 return time
 
