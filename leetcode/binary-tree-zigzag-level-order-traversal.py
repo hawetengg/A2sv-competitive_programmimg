@@ -10,7 +10,7 @@ class Solution:
 
         def traversal(node, y):
             if not node:
-                return node
+                return
 
             if len(arr) == y:
                 arr.append([])
